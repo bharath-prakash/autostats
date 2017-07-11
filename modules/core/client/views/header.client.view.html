@@ -1,23 +1,30 @@
   <div class="indigo darken-4" data-ng-controller="HeaderController">
 
-    <nav class="indigo darken-4">
+    <nav class="indigo darken-4 top-nav">
      <div class="nav-wrapper">
-       <a href="#" class="nav-link button-close" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="232" data-closeonclick="false">
+       <!--a href="#" class="nav-link button-close" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="232" data-closeonclick="false">
+         <i class="small material-icons">view_module</i>
+       </a-->
+        <a href="#" class="nav-link button-close" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="232" data-closeonclick="true">
          <i class="small material-icons">view_module</i>
        </a>
+
 
        <a data-ui-sref="home"  class="brand-logo">AutoStat</a>
             
        <ul id="profile" class="right hide-on-med-and-down top_nav">
-         <li><a href='javascript:void(0);'>
+         
+       <li data-ng-show="authentication.user"><a href='javascript:void(0);' data-ui-sref="trips">Trips</a></li>
+       <li data-ng-show="authentication.user"><a href='javascript:void(0);' data-ui-sref="devices"><i class="small material-icons">vibration</i></a></li>
+         <li data-ng-show="authentication.user"><a href='#' class="button-close" data-activates="notif-nav" data-sidenav="right" data-menuwidth="280" data-closeonclick="true">
            <i class="small material-icons">notifications</i>
          </a>
          </li>
-         <li><a href='javascript:void(0);' ><i class="small material-icons">settings</i></a></li>
+         <li data-ng-show="authentication.user"><a href='javascript:void(0);' data-ui-sref="routesettings"><i class="small material-icons">settings</i></a></li>
          <li data-ng-hide="authentication.user"><a data-ui-sref="authentication.signin">Login</a></li>
+          <li data-ng-hide="authentication.user"><a data-ui-sref="authentication.signup">Singup</a></li>
          <li data-ng-show="authentication.user">
-
-           <a href='javascript:void(0);' class="dropdown-button"
+           <a href='javascript:void(0);' class="dropdown-button browser-default"
            data-activates="profileDropdown" dropdown data-hover="true">
          <img data-ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
          <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
@@ -44,12 +51,60 @@
        </ul>
      </div>
    </nav>
-   <ul id="nav-mobile" class="side-nav">
-       <li><a href="#!"><i class="material-icons">folder_special</i>First Link With Icon</a></li>
-       <li><a href="#!">Second Link</a></li>
-       <li><div class="divider"></div></li>
-       <li><a class="subheader">Subheader</a></li>
-       <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+   <ul id="nav-mobile" class="side-nav main-nav">
+      <li data-ng-show="authentication.user"><a href='javascript:void(0);' data-ui-sref="trips"  ><i class="small material-icons white-text">flight_takeoff</i> Trips</a></li>
+       <li data-ng-show="authentication.user"><a href='javascript:void(0);' data-ui-sref="devices"><i class="small material-icons white-text">vibration</i> Devices</a> </li>
+    
+       <li data-ng-show="authentication.user"><a href="#!" class="button-close" data-activates="notif-nav" data-sidenav="right" data-menuwidth="280" data-closeonclick="true"><i class="material-icons white-text">notifications</i>Notifications</a></li>
+      
+       <li data-ng-show="authentication.user"><a href='javascript:void(0);' data-ui-sref="routesettings"><i class="small material-icons white-text">settings</i> Settings</a></li>
+        <li data-ng-hide="authentication.user"><a data-ui-sref="authentication.signin"><i class="material-icons white-text">account_circle</i>Login</a></li>
+
+         <li data-ng-hide="authentication.user"><a data-ui-sref="authentication.signup"><i class="material-icons white-text">person_add</i>Singup</a></li>
+         <li class="divider"></li>
+         <li data-ng-show="authentication.user">
+           <a href='javascript:void(0);' >
+         <img data-ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+         <span data-ng-bind="authentication.user.displayName"></span> 
+       </a>
+       
+
+         </li>
+          <li data-ui-sref-active="active" class=" " data-ng-show="authentication.user">
+           <a data-ui-sref="settings.profile"><i class="material-icons white-text">account_circle</i>Edit Profile</a>
+         </li>
+         <li data-ui-sref-active="active" class="" data-ng-show="authentication.user">
+           <a data-ui-sref="settings.picture"><i class="material-icons white-text">picture_in_picture</i> Profile Picture</a>
+         </li>
+         <li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'" data-ng-show="authentication.user">
+           <a data-ui-sref="settings.password"><i class="material-icons white-text">vpn_key</i> Change Password</a>
+         </li>
+         <li data-ui-sref-active="active" class="" data-ng-show="authentication.user">
+           <a data-ui-sref="settings.accounts"><i class="material-icons white-text">share</i> Social Accounts</a>
+         </li>
+         <li class="divider" data-ng-show="authentication.user"></li>
+         <li data-ng-show="authentication.user">
+           <a href="/api/auth/signout" target="_self"><i class="material-icons white-text">power_settings_new</i> Signout</a>
+         </li>
+     </ul>
+
+     <ul id="notif-nav" class="side-nav notif">
+     <li data-ng-repeat="not in notifications">
+      <a href="#"> <div class="card horizontal">
+  <div class="card-image valign-wrapper">
+    <i class="{{not.color}}-text material-icons md-32">notifications_active</i>
+  </div>
+  <div class="card-stacked">
+    <div class="card-content main-text align-center">
+      <p class="{{not.color}}-text">{{not.text}}</p>
+      <p class="grey-text">{{not.date}}</p>
+    </div>
+  </div>
+</div>
+  </a>
+     </li>
+    
+      
      </ul>
 
 </div>

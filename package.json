@@ -14,7 +14,7 @@
     "npm": ">=1.4.28"
   },
   "scripts": {
-    "start": "pm2 start grunt",
+    "start": "grunt",
     "test": "grunt test",
     "postinstall": "bower install --config.interactive=false"
   },

@@ -8,11 +8,18 @@ module.exports = {
         'public/lib/slick-carousel/slick/slick.css',
         'public/lib/slick-carousel/slick/slick-theme.css',
         'public/lib/angular-materialize/css/materialize.clockpicker.css',
-        'public/lib/nvd3/build/nv.d3.css'
+        'public/lib/nvd3/build/nv.d3.css',
+        'public/lib/leaflet/dist/leaflet.css',
+        'public/lib/ng-scrollbar/dist/ng-scrollbar.css',
+        'public/lib/leaflet-label/leaflet.label.css',
+        'public/lib/nouislider/distribute/nouislider.css',
+        'public/lib/leaflet-mastercluster/dist/MarkerCluster.css',
+        'public/lib/leaflet-mastercluster/dist/MarkerCluster.Default.css'
       ],
       js: [
         'public/lib/jquery/dist/jquery.min.js',
         'public/lib/materialize/dist/js/materialize.js',
+        'public/lib/nouislider/distribute/nouislider.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js',
         'public/lib/angular-animate/angular-animate.js',
@@ -28,7 +35,18 @@ module.exports = {
         'public/lib/angular-materialize/src/angular-materialize.js',
         'public/lib/d3/d3.min.js',
         'public/lib/nvd3/build/nv.d3.min.js',
-        'public/lib/angular-nvd3/dist/angular-nvd3.min.js'
+        'public/lib/angular-nvd3/dist/angular-nvd3.min.js',
+        'public/lib/leaflet/dist/leaflet.js',
+        'public/custom/Bing.js',
+        'public/custom/Google.js',
+        'public/lib/leaflet-rotate/leaflet.rotatedMarker.js',
+        'public/lib/leaflet-marker/MovingMarker.js',
+        'public/lib/leaflet-label/leaflet.label.js',
+        'public/lib/leaflet-mastercluster/dist/leaflet.markercluster.js',
+        'public/lib/angular-simple-logger/dist/angular-simple-logger.js',
+        'public/lib/ui-leaflet/dist/ui-leaflet.js',
+        'public/custom/ui-leaflet-layers.min.js'
+        
 
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']

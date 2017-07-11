@@ -1,6 +1,8 @@
 <section class="row" data-ng-controller="AuthenticationController">
-  <h4 class="col m12 align-center">Sign in using your social accounts</h4>
-  <div class="col m12 align-center">
+  <div class="col s12 m6" ui-view></div>
+   <div class="col s12 m6">
+  <h5 class="col s12 align-center">or Sign in using your social accounts</h5>
+  <div class="col m12 align-center social-login">
     <img ng-click="callOauthProvider('/api/auth/facebook')" ng-src="/modules/users/img/buttons/facebook.png">
     <img ng-click="callOauthProvider('/api/auth/twitter')" ng-src="/modules/users/img/buttons/twitter.png">
     <img ng-click="callOauthProvider('/api/auth/google')" ng-src="/modules/users/img/buttons/google.png">
@@ -8,5 +10,5 @@
     <img ng-click="callOauthProvider('/api/auth/github')" ng-src="/modules/users/img/buttons/github.png">
     <img ng-click="callOauthProvider('/api/auth/paypal')"  ng-src="/modules/users/img/buttons/paypal.png">
   </div>
-  <div ui-view></div>
+  </div> 
 </section>

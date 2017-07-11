@@ -1,9 +1,9 @@
 <section data-ng-controller="SettingsController">
   <div class="page-header">
-    <h1>Settings</h1>
+    <h4 class="align-center">Settings</h4>
   </div>
   <div class="row">
-    <nav class="col-sm-3 col-md-3">
+    <!--nav class="col s12">
       <ul class="nav nav-pills nav-stacked">
         <li data-ui-sref-active="active">
           <a data-ui-sref="settings.profile">Edit Profile</a>
@@ -18,8 +18,16 @@
           <a data-ui-sref="settings.accounts">Manage Social Accounts</a>
         </li>
       </ul>
-    </nav>
-    <div class="col-sm-9 col-md-8 settings-view">
+    </nav-->
+    <div class="col s12">
+    <ul class="tabs">
+        <li class="tab col s12 m3" ><a data-ui-sref="settings.profile" data-ui-sref-active="active">Edit profile</a></li>
+        <li class="tab col s12 m3" data-ui-sref-active="active"><a data-ui-sref-active="active" data-ui-sref="settings.picture">Change profile picture</a></li>
+        <li class="tab col s12 m3" data-ui-sref-active="active"><a data-ui-sref-active="active" data-ui-sref="settings.password">Change password</a></li>
+        <li class="tab col s12 m3" data-ui-sref-active="active"><a  data-ui-sref-active="active"data-ui-sref="settings.accounts">Manage Social Accounts</a></li>
+      </ul>
+      </div>
+    <div class="col s12 settings-view">
       <div data-ui-view></div>
     </div>
   </div>

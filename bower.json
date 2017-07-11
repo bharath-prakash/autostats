@@ -13,9 +13,12 @@
     "angular-ui-router": "^1.0",
     "angular-file-upload": "^2.5",
     "angular-slick": "^0.2.1",
+    "materialize": "^0.98.2",
     "angular-materialize": "^0.2.2",
-    "jquery": "2.1.1",
-    "angular-nvd3": "^1.0.9"
+    "jquery": "^2.1.1",
+    "angular-nvd3": "^1.0.9",
+    "ui-leaflet": "^2.0.0",
+    "ng-scrollbar": "^0.0.8"
   },
   "resolutions": {
     "angular": "^1.6"

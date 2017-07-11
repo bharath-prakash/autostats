@@ -16,6 +16,18 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       .state('not-found', {
         url: '/not-found',
         templateUrl: 'modules/core/views/404.client.view.html'
+      }).state('trips', {
+        url: '/trips',
+        templateUrl: 'modules/core/views/trips.client.view.html'
+      }).state('devices', {
+        url: '/devices',
+        templateUrl: 'modules/core/views/devices.client.view.html'
+      }).state('routesettings', {
+        url: '/routesettings',
+        templateUrl: 'modules/core/views/routesettings.client.view.html'
+      }).state('login', {
+        url: '/login',
+        templateUrl: 'modules/core/views/userlogin.client.view.html'
       });
   }
 ]);

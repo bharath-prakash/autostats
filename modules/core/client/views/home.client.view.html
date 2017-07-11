@@ -1,49 +1,65 @@
 <section data-ng-controller="HomeController" class="dashboard">
 
   <div class="row l1_status" >
-    <div class="col s12 m3">
+    <div class="col s12 m6 l3">
 
       <div class="card horizontal">
-      <div class="card-image valign-wrapper">
+      <div class="card-image  valign-wrapper">
         <i class="material-icons md-48">time_to_leave</i>
       </div>
       <div class="card-stacked">
-        <div class="card-content main-text valign-wrapper">
+        <div class="card-content main-text align-center">
           <p>20 trips</p>
         </div>
-        <div class="card-action">
+        <div class="card-action align-center">
           <a href="#">view all trips</a>
         </div>
       </div>
     </div>
   </div>
-    <div class="col s12 m3">
+    <div class="col s12 m6 l3">
     <div class="card horizontal">
-    <div class="card-image valign-wrapper">
+    <div class="card-image   valign-wrapper ">
       <i class="material-icons md-48">vibration</i>
     </div>
     <div class="card-stacked">
-      <div class="card-content main-text valign-wrapper">
+      <div class="card-content main-text align-center">
         <p>1 device</p>
       </div>
-      <div class="card-action">
+      <div class="card-action align-center">
         <a href="#">View all devices.</a>
       </div>
     </div>
   </div>
   </div>
 
-  <div class="col s12 m6">
+  <div class="col s12 m6 l3">
   <div class="card horizontal">
   <div class="card-image valign-wrapper">
     <i class="material-icons md-48">notifications_active</i>
   </div>
   <div class="card-stacked">
-    <div class="card-content main-text valign-wrapper">
+    <div class="card-content main-text align-center">
       <p class="red-text">2 active notifications</p>
     </div>
-    <div class="card-action">
+    <div class="card-action align-center">
       <a href="#">View all notifications.</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col s12 m6 l3">
+  <div class="card horizontal">
+  <div class="card-image valign-wrapper">
+    <i class="material-icons md-48">timeline</i>
+  </div>
+  <div class="card-stacked">
+    <div class="card-content main-text align-center">
+      <p class="grey-text">12309 kms</p>
+    </div>
+    <div class="card-action align-center">
+      <a href="#">Total distance travelled.</a>
     </div>
   </div>
 </div>
@@ -55,13 +71,13 @@
   </div>
   <div class="row">
 
-    <div class="col s12">
+    <!--div class="col s12">
 
       <div class="card-panel">
         <nav class="blue"> <div class=" align-center">Routes vs Drivers graph</div> <i class="material-icons">keyboard_arrow_down</i> </nav>
       <nvd3 options="rt_options" data="rt_data" class="with-3d-shadow with-transitions"></nvd3>
     </div>
-</div>
+</div-->
 
     <div class="col s12 m6">
       <div class="card-panel">
@@ -76,7 +92,7 @@
   </div>
   </div>
   <div class="col s12 m6">
-     <nvd3 options="ch2_options" data="ch2_data"></nvd3>
+     <!--nvd3 options="ch2_options" data="ch2_data"></nvd3-->
 
   </div>
   </div>

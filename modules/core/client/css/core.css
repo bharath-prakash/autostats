@@ -382,16 +382,98 @@ font-size: 20px;
 }
 
 .dashboard .l1_status .main-text{
-  font-size: 34px;
+  font-size: 28px;
   color: grey;
 }
 
 .dashboard .l1_status .card-image i{
-  font-size: 64px;
+  font-size: 46px;
   padding: 10px;
   color: grey;
 }
 
 .dashboard .l1_status .card-action{
   border: 0px;
+  padding: 6px;
+}
+
+.dashboard .l1_status .card-content{
+  padding: 10px;
+      line-height: 24px;
+    
+}
+
+.dashboard .l1_status .card-content p {
+  font-size: 20px!important;
+}
+
+.dashboard .l1_status .card-action a{
+ 
+  font-size: 12px;
+}
+
+.nav-link{
+  display: none;
+}
+
+@media (max-width: 992px){
+  .nav-link{
+    display: inline-block;
+  }
+}
+
+@media (max-width: 600px){
+  .nav-link i{
+    padding: 16px;
+  }
+
+  .main-nav,.side-nav.notif {
+    margin-top: 56px;
+  }
+
+  .social-login img{
+    height: 64px;
+  }
+}
+
+
+.side-nav.notif{
+  background-color: white;
+}
+
+.side-nav.notif li > a{
+  
+  color: grey;
+}
+
+.side-nav.notif .card{
+  margin : 10px;
+  padding : 10px;
+}
+
+
+.side-nav.notif .card .card-content{
+    line-height: 20px;
+  }
+
+
+  .side-nav.notif a {
+    font-size: 12px;
+    height: auto;
+    line-height: 20px;
+    padding: 0px;
+  }
+
+
+.side-nav.main-nav .divider {
+    margin: 1px 0 0 0;
+
+  }
+.header-profile-image{
+      position: relative;
+    top: 10px;
+}
+
+.trip_view .leaflet-popup{
+  bottom: 8px!important;
 }

@@ -1,11 +1,17 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication','$window',
-  function ($scope, Authentication,$window) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication','$window','$state',
+  function ($scope, Authentication,$window,$state) {
     // This provides Authentication context.
-    $scope.authentication = Authentication;
+   $scope.authentication = Authentication;
+console.log($scope.authentication.user);
+    if($scope.authentication.user==''){
+      console.log("User not logged in");
+      $state.go('authentication.signin');
+    }
 
-    /*var s = Snap('#svg');
+      /*var s = Snap('#svg');
+    }
     function drawCircle(x,y,rad,clr,str,wid){
       s.circle(x,y,rad).attr({
         fill: clr,
@@ -39,10 +45,10 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
                     tooltipHide: function(e){ console.log("tooltipHide"); }
                 },
                 xAxis: {
-                    axisLabel: 'Time (ms)'
+                    axisLabel: 'Time (mins)'
                 },
                 yAxis: {
-                    axisLabel: 'Voltage (v)',
+                    axisLabel: 'Distance (kms)',
                     tickFormat: function(d){
                         return d3.format('.02f')(d);
                     },
@@ -54,14 +60,14 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             },
             title: {
                 enable: true,
-                text: 'Average speed vs throtling'
+                text: 'Average speed vs distance'
             },
             caption: {
                 enable: true,
-                html: '<b>Data input chart.</b> ',
+                html: 'Provides details about vehicle travelled speed vs distnace covered.',
                 css: {
-                    'text-align': 'justify',
-                    'margin': '10px 13px 0px 7px'
+                    'text-align': 'center',
+                    'margin': '20px'
                 }
             }
         };
@@ -75,7 +81,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
             //Data is represented as an array of {x,y} pairs.
             for (var i = 0; i < 100; i++) {
-                sin.push({x: i, y: Math.sin(i/10)});
+                 sin.push({x: i, y: Math.sin(i/10)});
                 sin2.push({x: i, y: i % 10 == 5 ? null : Math.sin(i/10) *0.25 + 0.5});
                 cos.push({x: i, y: .5 * Math.cos(i/10+ 2) + Math.random() / 10});
             }
@@ -84,19 +90,19 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             return [
                 {
                     values: sin,      //values - represents the array of {x,y} data points
-                    key: 'Sine Wave', //key  - the name of the series.
+                    key: 'AverageTrip', //key  - the name of the series.
                     color: '#ff7f0e',  //color - optional: choose your own line color.
                     strokeWidth: 2,
                     classed: 'dashed'
                 },
                 {
                     values: cos,
-                    key: 'Cosine Wave',
+                    key: 'Trip2',
                     color: '#2ca02c'
                 },
                 {
                     values: sin2,
-                    key: 'Another sine wave',
+                    key: 'Trip3',
                     color: '#7777ff',
                     area: true      //area - set to true if you want this line to turn into a filled area chart.
                 }
@@ -195,14 +201,14 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
                y: function(d){return d.value + (1e-10);},
                showValues: true,
                valueFormat: function(d){
-                   return d3.format(',.4f')(d);
+                   return d3.format(',.1f')(d);
                },
                duration: 500,
                xAxis: {
-                   axisLabel: 'Date'
+                   axisLabel: 'Date (dd/mm/yyyy)'
                },
                yAxis: {
-                   axisLabel: 'Distance travelled',
+                   axisLabel: 'Distance travelled (kms)',
                    axisLabelDistance: -10
                }
            }
@@ -222,26 +228,26 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
                    } ,
                    {
                        "label" : "30/6/2017" ,
-                       "value" : 32.807804682612
+                       "value" : 32
                    } ,
                    {
                        "label" : "1/7/2017" ,
-                       "value" : 196.45946739256
+                       "value" : 196
                    } ,
                    {
                        "label" : "2/7/2017" ,
-                       "value" : 0.19434030906893
+                       "value" : 1.9
                    } ,
                    {
                        "label" : "3/7/2017" ,
                        "value" : 0
                    } ,
                    {
-                       "label" : "3/7/2017" ,
+                       "label" : "4/7/2017" ,
                        "value" : 13.9
                    } ,
                    {
-                       "label" : "3/7/2017" ,
+                       "label" : "5/7/2017" ,
                        "value" : 5.13
                    }
                ]
@@ -251,12 +257,14 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
        // route data start
 
+      /*
        var color = d3.scale.category20()
     $scope.rt_options = {
         chart: {
             type: 'forceDirectedGraph',
-            height: 650,
-            width: (function(){ return nv.utils.windowSize().width })(),
+            height: 550,
+            //width: (function(){ return nv.utils.windowSize().width -100 })(),
+            width: 400,
             margin:{top: 0, right: 0, bottom: 0, left: 0},
             color: function(d){
                 return color(d.group)
@@ -608,7 +616,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             {"source":76,"target":48,"value":1},
             {"source":76,"target":58,"value":1}
         ]
-    }
+    } */
 
 
        // route data end
