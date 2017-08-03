@@ -14,7 +14,7 @@
             
        <ul id="profile" class="right hide-on-med-and-down top_nav">
          
-       <li data-ng-show="authentication.user"><a href='javascript:void(0);' data-ui-sref="trips">Trips</a></li>
+       <li data-ng-show="authentication.user"><a href='javascript:void(0);' data-ui-sref="viewtrips">Trips</a></li>
        <li data-ng-show="authentication.user"><a href='javascript:void(0);' data-ui-sref="devices"><i class="small material-icons">vibration</i></a></li>
          <li data-ng-show="authentication.user"><a href='#' class="button-close" data-activates="notif-nav" data-sidenav="right" data-menuwidth="280" data-closeonclick="true">
            <i class="small material-icons">notifications</i>
@@ -77,7 +77,7 @@
            <a data-ui-sref="settings.picture"><i class="material-icons white-text">picture_in_picture</i> Profile Picture</a>
          </li>
          <li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'" data-ng-show="authentication.user">
-           <a data-ui-sref="settings.password"><i class="material-icons white-text">vpn_key</i> Change Password</a>
+           <a data-ui-sref="settings.password"><i class="material-icons white-text">vpn_key</i> Password</a>
          </li>
          <li data-ui-sref-active="active" class="" data-ng-show="authentication.user">
            <a data-ui-sref="settings.accounts"><i class="material-icons white-text">share</i> Social Accounts</a>
@@ -106,5 +106,5 @@
     
       
      </ul>
-
+<div class="main-overlay" data-ng-class="  showoverlay ? 'show' : 'hide'"><img src="modules/core/img/grid.svg"></div>
 </div>

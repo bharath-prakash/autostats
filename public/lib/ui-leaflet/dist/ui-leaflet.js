@@ -2029,7 +2029,10 @@ angular.module('ui-leaflet').service('leafletMarkersHelpers', ["$rootScope", "$t
     };
 
     var existDomContainer = function existDomContainer(groupName) {
+        if(angular.element(groups[groupName])._map != undefined)
         return angular.element(groups[groupName]._map._container).parent().length > 0;
+        else
+            return false;
     };
 
     var createLeafletIcon = function createLeafletIcon(iconData) {

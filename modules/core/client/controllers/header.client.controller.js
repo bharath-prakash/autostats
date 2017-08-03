@@ -1,13 +1,20 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus',
-  function ($scope, $state, Authentication, Menus) {
+angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus','$timeout',
+  function ($scope, $state, Authentication, Menus,$timeout) {
     // Expose view variables
     $scope.$state = $state;
     $scope.authentication = Authentication;
 
     // Get the topbar menu
     $scope.menu = Menus.getMenu('topbar');
+
+    $scope.showoverlay = true;
+    var temphtml = angular.element('#content-main').html();
+    angular.element('#content-main').html('');
+
+
+    $timeout( function(){ angular.element('#content-main').html(temphtml);$scope.showoverlay=false; }, 3000);
 
     // Toggle the menu items
     $scope.isCollapsed = false;

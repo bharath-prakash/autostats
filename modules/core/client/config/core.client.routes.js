@@ -16,12 +16,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       .state('not-found', {
         url: '/not-found',
         templateUrl: 'modules/core/views/404.client.view.html'
-      }).state('trips', {
+      }).state('viewtrips', {
         url: '/trips',
         templateUrl: 'modules/core/views/trips.client.view.html'
-      }).state('devices', {
-        url: '/devices',
-        templateUrl: 'modules/core/views/devices.client.view.html'
+      }).state('livetrips', {
+        url: '/livetrips',
+        templateUrl: 'modules/core/views/live-trips.client.view.html'
       }).state('routesettings', {
         url: '/routesettings',
         templateUrl: 'modules/core/views/routesettings.client.view.html'

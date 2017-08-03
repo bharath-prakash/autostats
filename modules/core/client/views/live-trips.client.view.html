@@ -1,0 +1,61 @@
+<section data-ng-controller="LiveTripsController" class="trip_view" >
+<div >
+ <nav class="grey accent-1">
+    <div class="nav-wrapper row">
+   
+      <form class="left col s6" style="margin-left: 20px;">
+        <div class="input-field " tooltipped data-position="bottom" data-delay="150" data-tooltip="{{tips.search}}">
+          <input id="search_inp" type="search" ng-model="search" required placeholder="Search vehicleNo/DriverName/Trip">
+          <label class="label-icon" for="search_inp"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+
+
+      <ul class="right ">
+        <li data-ng-class="currpg == 'recent' ? 'active' : 'none' "><a data-ui-sref="trips"  href="#">Recent Trips</a></li>
+        <li data-ng-class="currpg == 'live' ? 'active' : 'none' " ><a data-ui-sref="livetrips" href="#" class="btn btn-floating pulse grey darken-2"><i class="material-icons">room</i></a> </li>
+        
+      </ul>
+    </div>
+  </nav>
+  </div>
+
+<div class="row" style="padding-top: 20px;">
+	<div class="col s3" style="height: {{trp_height-40}}px; overflow-y: scroll;">
+	 <ul class="collection">
+	  <li class="collection-item" data-ng-repeat="trp in trips">
+	  <p>Vehicle No : {{trp.vehicle_type}}</p>
+	  <p>Driver No : {{trp.from}}</p>
+	  <p>Status : {{trp.total_trip_duration}}</p>
+      </li>
+      </ul>
+		
+	</div>
+	<div class="col s9 align-center">
+   
+   <leaflet lf-center="center" id="map_live" markers="live_markers" event-broadcast="live_events"  width="100%" height="{{trp_height -100 }}px"></leaflet>
+
+  </div>
+</div>
+
+<!-- Marker popup -->
+
+    <div class="card blue lighten-1 marker-popup" data-ng-class="markerpop" >
+            <div class="card-content white-text">
+              <span class="card-title">Vehicle Details</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light red" data-ng-click="markerpop='hide'"><i class="material-icons">close</i></a>
+              <p>{{selv.data}}</p>
+              <p>Total trips : 2</p>
+              <p>Last trip : 21kms</p>
+              <p>Area 1 to Area 2</p>
+            </div>
+            <div class="card-action">
+              <a href="#">Contact</a>
+              <a href="#">Schedule</a>
+              
+            </div>
+          </div>
+
+
+</section>

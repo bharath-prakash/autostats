@@ -1,4 +1,4 @@
-<section data-ng-controller="TripsController" class="trip_view" >
+<section data-ng-controller="ViewTripsController" class="trip_view" >
 <div >
  <nav class="grey accent-1">
     <div class="nav-wrapper row">
@@ -11,16 +11,15 @@
         </div>
       </form>
 
-
-      <ul class="right ">
-        <li data-ng-class="currpg == 'recent' ? 'active' : 'none' "><a data-ng-click="chooseview('recent')"  href="#">Recent Trips</a></li>
-        <li data-ng-class="currpg == 'live' ? 'active' : 'none' " ><a data-ng-click="chooseview('live')" href="#" class="btn btn-floating pulse grey darken-2"><i class="material-icons">room</i></a> </li>
+<ul class="right ">
+        <li data-ng-class="currpg == 'recent' ? 'active' : 'none' "><a data-ui-sref="trips"  href="#">Recent Trips</a></li>
+        <li data-ng-class="currpg == 'live' ? 'active' : 'none' " ><a data-ui-sref="livetrips" href="#" class="btn btn-floating pulse grey darken-2"><i class="material-icons">room</i></a> </li>
         
       </ul>
     </div>
   </nav>
   </div>
-<div class="row" style="padding-top: 20px;" data-ng-if="currpg == 'recent'">
+<div class="row" style="padding-top: 20px;" >
 		<div class="col s3" style="height: {{trp_height-40}}px; overflow-y: scroll;">
 	<div class="page-heading ">Your Trip List</div>
 	
@@ -60,26 +59,11 @@
 <!-- <div nouislider ng-model="replay.duration" min="50" max="3000"></div> -->
     	 
 
-    	 <leaflet  lf-center="center" id="map_trips" event-broadcast="events" markers="markers" geojson="geojson" width="100%" height="{{trp_height -100 }}px"></leaflet>
+    	 <leaflet  lf-center="center_trip" id="map_trips" event-broadcast="events" markers="markers" geojson="geojson" width="100%" height="{{trp_height -100 }}px"></leaflet>
     </div>
 
 </div>
-<div class="row" data-ng-if="currpg == 'live'" style="padding-top: 20px;">
-	<div class="col s3" style="height: {{trp_height-40}}px; overflow-y: scroll;">
-	 <ul class="collection">
-	  <li class="collection-item" data-ng-repeat="trp in trips">
-	  <p>Vehicle No : </p>
-	  <p>Driver No : </p>
-	  <p>Status No : </p>
-      </li>
-      </ul>
-		
-	</div>
-	<div class="col s9 align-center">
-   
-   <leaflet lf-center="center" markers="live_markers" width="100%" height="{{trp_height -100 }}px"></leaflet>
 
-  </div>
-</div>
+
 
 </section>

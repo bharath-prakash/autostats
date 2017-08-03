@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Devices</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="device in vm.devices"
+       ui-sref="devices.view({ deviceId: device._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="device.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="device.user" ng-bind="device.user.displayName"></span>
+        <span ng-if="!device.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="device.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.devices.$resolved && !vm.devices.length">
+    No Devices yet, why don't you <a ui-sref="devices.create">create one</a>?
+  </div>
+</section>

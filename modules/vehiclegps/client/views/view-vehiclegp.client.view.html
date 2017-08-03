@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.vehiclegp.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.vehiclegp.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="vehiclegps.edit({ vehiclegpId: vm.vehiclegp._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.vehiclegp.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.vehiclegp.user"
+            ng-bind="vm.vehiclegp.user.displayName"></span>
+      <span ng-if="!vm.vehiclegp.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.vehiclegp.content"></p>
+</section>

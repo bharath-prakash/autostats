@@ -9,6 +9,8 @@ exports.renderIndex = function (req, res) {
   });
 };
 
+
+
 /**
  * Render the server error page
  */

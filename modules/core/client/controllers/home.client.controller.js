@@ -621,6 +621,7 @@ console.log($scope.authentication.user);
 
        // route data end
 
+        
 
   }
 ]);

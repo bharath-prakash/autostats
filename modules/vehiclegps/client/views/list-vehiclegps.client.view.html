@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Vehiclegps</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="vehiclegp in vm.vehiclegps"
+       ui-sref="vehiclegps.view({ vehiclegpId: vehiclegp._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="vehiclegp.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="vehiclegp.user" ng-bind="vehiclegp.user.displayName"></span>
+        <span ng-if="!vehiclegp.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="vehiclegp.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.vehiclegps.$resolved && !vm.vehiclegps.length">
+    No Vehiclegps yet, why don't you <a ui-sref="vehiclegps.create">create one</a>?
+  </div>
+</section>

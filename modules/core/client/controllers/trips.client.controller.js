@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('core').controller('TripsController', ['$scope', 'Authentication','$window','leafletMarkerEvents','$timeout','leafletData',
-  function ($scope, Authentication,$window,leafletMarkerEvents,$timeout) {
+angular.module('core').controller('ViewTripsController', ['$scope', 'Authentication','$window','leafletMarkerEvents','$timeout','leafletData',
+  function ($scope, Authentication,$window,leafletMarkerEvents,$timeout,leafletData) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
+
+
 
     $scope.trp_height = $(window).height() - 140;
     //console.log($scope.trp_height);
@@ -336,8 +338,7 @@ angular.module('core').controller('TripsController', ['$scope', 'Authentication'
 						 	}
 				 		];
 
-                $scope.center = { autoDiscover: true
-                };
+                $scope.center_trip = { autoDiscover: true      };
 
                 $scope.layers = {
 									"baselayers": {
@@ -363,6 +364,7 @@ angular.module('core').controller('TripsController', ['$scope', 'Authentication'
             $scope.drawroute = function(trp){
             	//console.log('clicked');
             	$scope.geojson = trp.trip_geojson;
+            
             	$scope.geojson.style = {
                     weight: 5,
                     opacity: 1,
@@ -373,7 +375,7 @@ angular.module('core').controller('TripsController', ['$scope', 'Authentication'
             	var cords = findGeoPoints(trp);
             	//console.log(cords);
             	var ctr = getLatLngCenter(cords);
-            	$scope.center = {'lng': ctr[0], 'lat': ctr[1], 'zoom':14};
+            	$scope.center_trip = {'lng': ctr[0], 'lat': ctr[1], 'zoom':14};
             	//console.log($scope.center);
 
             	$scope.markers = findMarkers(trp);
@@ -405,6 +407,7 @@ function findMarkers(trp){
 			markers['m'+i] = {'lat':trp.trip_markers[i].lat,'lng':trp.trip_markers[i].lng};	
 			markers['m'+i].message = 'Trip Start :' + trp.schedule_starttime;
 			markers['m'+i].focus = true;
+			markers['m'+i].group = '';
 			markers['m'+i].iconAngle = 0;
 			markers['m'+i].icon = {'iconUrl':'modules/core/img/car.png', 'iconSize':  [50, 50]};
 			markers['m'+i].mvcoords = findGeoPoints(trp);
@@ -534,447 +537,6 @@ function getLatLngCenter(latLngInDegr) {
     return ([rad2degr(lat), rad2degr(lng)]);
 }
 
-$scope.chooseview = function(pname){
-	//console.log(map);
-	if(pname == 'live'){
-		$scope.currpg='live';
-
-		var vehicle_markers = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.6129150390625,
-          12.911962855650449
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.61789321899414,
-          12.917568041044994
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63025283813477,
-          12.913636058484865
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.6392650604248,
-          12.910038658542735
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63008117675781,
-          12.910373302582068
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62381553649902,
-          12.919241206343573
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62269973754883,
-          12.923758696663581
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.607421875,
-          12.920830702996128
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.6227855682373,
-          12.90660853131093
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62184143066406,
-          12.90041745086063
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63059616088867,
-          12.900668443589067
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.61900901794434,
-          12.899748135686973
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62235641479492,
-          12.896736195246726
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.64063835144043,
-          12.902425385636512
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63651847839355,
-          12.904433304292924
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63093948364258,
-          12.907947123147105
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.61420249938965,
-          12.915225590800675
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.61368751525879,
-          12.919743153747707
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.61128425598145,
-          12.919492180171718
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62563943862915,
-          12.910394217819656
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.6248025894165,
-          12.908386347031712
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62915849685668,
-          12.911105334856154
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63053178787231,
-          12.911858280101354
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62887954711914,
-          12.909390284441628
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63368606567383,
-          12.912381157409275
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63435125350952,
-          12.913740633290054
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63400793075562,
-          12.91457723015606
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.6324200630188,
-          12.915685716689115
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63486623764038,
-          12.916543221765542
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62958765029907,
-          12.916605965923868
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62864351272583,
-          12.915413824221092
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62765645980835,
-          12.914472655700974
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.6278281211853,
-          12.91438899610541
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62791395187378,
-          12.91422167683024
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.62739896774292,
-          12.915121016616954
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          77.63115406036376,
-          12.907779799559522
-        ]
-      }
-    }
-  ]
-};
-
-		$scope.live_markers = findMarks(vehicle_markers);
-		//console.log($scope.live_markers);
-		/*$scope.events='';
-		$scope.markers = '';
-		$scope.geojson = '';*/
-
-	}else if(pname == 'recent'){
-		$scope.currpg='recent';
-
-	}
-
-};
-
-
-function findMarks(geojson){ 
-	var vpoints = {}; 
-	for(var i=0; i<geojson.features.length; i++){
-		if(geojson.features[i].geometry.type == 'Point'){
-
-			//for( var x = 0 ; x < geojson.features[i].geometry.coordinates.length; x++){
-				//gpoints.push(trp.trip_geojson.data.features[i].geometry.coordinates[x]);	
-				vpoints['v'+i] = new Object();
-				vpoints['v'+i].lat = geojson.features[i].geometry.coordinates[1];
-				vpoints['v'+i].lng = geojson.features[i].geometry.coordinates[0];
-				vpoints['v'+i].group = 'fleet1';
-				vpoints['v'+i].icon = {'iconUrl':'modules/core/img/car.png', 'iconSize':  [50, 50]};
-				vpoints['v'+i].message = 'Vehicle No  : xxx' ;
-
-			//}
-			
-		}
-	}
-	return vpoints;
-};
 
   }
 ]);
